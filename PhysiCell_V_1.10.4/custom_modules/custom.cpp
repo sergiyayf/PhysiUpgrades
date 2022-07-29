@@ -167,7 +167,7 @@ void setup_tissue( void )
 	// create some of each type of cell 
 	
 	Cell* pC;
-	
+	/*
 	for( int k=0; k < cell_definitions_by_index.size() ; k++ )
 	{
 		Cell_Definition* pCD = cell_definitions_by_index[k]; 
@@ -187,7 +187,29 @@ void setup_tissue( void )
 	
 	// load cells from your CSV file (if enabled)
 	load_cells_from_pugixml(); 	
-	
+	*/
+    //Cell_Definition* pCD = find_cell_definition("wt"); 
+    //pC = create_cell( *pCD ); 
+    //pC->assign_position( {0.0,0.0,0.0} );
+    
+    //bool write_matlab( std::vector< std::vector<double> >& input , std::string filename );
+ 
+    std::vector<std::vector<double>> B = read_matlab( "./output/output00000080_cells.mat" );
+    // B matrix first index is the parameter, second index is the cell 
+    //     std::cout << B[0][1] << std::endl; 
+    //     std::cout << B[0].size() << std::endl;
+    // Get how many cells there are 
+    int number_of_cells = B[0].size();
+    
+    for (int i = 0; i < number_of_cells; i++) { 
+        Cell_Definition* pCD = cell_definitions_by_index[B[6][i]]; 
+        pC = create_cell( *pCD ); 
+        double x = B[2][i];
+        double y = B[3][i];
+        double z = B[4][i];
+        pC -> assign_position({x,y,z}); 
+    }
+
 	return; 
 }
 

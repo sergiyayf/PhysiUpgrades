@@ -27,7 +27,7 @@
 	</parallel> 
 	
 	<save>
-		<folder>output_mttest</folder>  
+		<folder>output_matlab_writing_test</folder>  
 
 		<full_data>
 			<interval units="min">60</interval>

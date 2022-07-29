@@ -89,4 +89,4 @@ void phenotype_function( Cell* pCell, Phenotype& phenotype, double dt );
 void custom_function( Cell* pCell, Phenotype& phenotype , double dt );
 
 void contact_function( Cell* pMe, Phenotype& phenoMe , Cell* pOther, Phenotype& phenoOther , double dt ); 
-
+bool write_matlab( std::vector< std::vector<double> >& input , std::string filename );
