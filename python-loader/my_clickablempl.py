@@ -58,7 +58,7 @@ def find_nearest_cell(cell_df,x,y):
 def connect_to_parents(cell,cell_df,ax = None):
     parent_ID = cell['parent_ID']
 
-    while True:
+    while parent_ID >= 0:
         parent_idx = np.where(cell_df['ID']==cell['parent_ID'])[0][0]
         parent = cell_df.loc[parent_idx]
         x = cell['position_x']
@@ -68,13 +68,12 @@ def connect_to_parents(cell,cell_df,ax = None):
         ax.plot([x,px],[y,py],color='k')
         cell = parent
         parent_ID = cell['parent_ID']
-        if parent_ID < 0:
-            break
-
+        # if parent_ID < 0:
+        #     break
     return
 
 def test_saving_parent_ID(ax):
-    mcds1 = pyMCDS('output00000002.xml', '..\PhysiCell_V_1.10.4\output')
+    mcds1 = pyMCDS('output00000107.xml', '../PhysiCell_V_1.10.4/output')
     print(mcds1.get_cell_df())
     print()
     cell_df = mcds1.get_cell_df()
@@ -94,7 +93,7 @@ xs = []
 ys = []
 # test_saving_parent_ID(ax)
 # cid = fig.canvas.mpl_connect('button_press_event', onclick)
-mcds1 = pyMCDS('output00000013.xml', '..\PhysiCell_V_1.10.4\output')
+mcds1 = pyMCDS('output00000107.xml', '../PhysiCell_V_1.10.4/output')
 cell_df = mcds1.get_cell_df()
 # a = find_nearest_cell(cell_df,1.0,1.0)
 # connect_to_parents(a,cell_df,ax=ax)
@@ -103,6 +102,6 @@ cell_df = mcds1.get_cell_df()
 fig, ax = plt.subplots(figsize=(10,10),dpi=150)
 plot_all_cell_types(ax,mcds1)
 cid = fig.canvas.mpl_connect('button_press_event', onclick)
-# plt.show()
+plt.show()
 
 
