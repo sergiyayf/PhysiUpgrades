@@ -16,22 +16,24 @@ def onclick(event):
 
     fig.canvas.draw()
 
-
 def tracking(clicked_x, clicked_y):
     clicked_x = clicked_x
     clicked_y = clicked_y
     number_of_files = len(timeseries) - 1
+    cell_df = timeseries[number_of_files].get_cell_df()
     my_cell = get_my_cell(cell_df, clicked_x, clicked_y)
     # Get number of my daughters
-    max_ID = 100
-    number_of_daughters = get_number_of_daughters(cell_df, my_cell['ID'], max_ID)
+    max_ID = np.max(cell_df['ID'])
+
 
     # Loop through other times to recreate a tree + positional progression
-    while number_of_files >= 0:
+    while number_of_files > 0:
         # load older cell data
         number_of_files -= 1
         older_mcds = timeseries[number_of_files]
+
         older_cell_df = older_mcds.get_cell_df()
+        number_of_daughters = get_number_of_daughters(cell_df, my_cell['ID'], max_ID)
 
         # check if the cell of interest is in the older frame
 
@@ -39,12 +41,14 @@ def tracking(clicked_x, clicked_y):
             # get the cell of interest in the older frame
 
             my_cell_older = older_cell_df.loc[np.where(older_cell_df['ID'] == my_cell['ID'])[0][0]]
-            my_new_number_of_daughters = get_number_of_daughters(older_cell_df, my_cell_older['ID'], my_cell['ID'])
+            my_new_number_of_daughters = get_number_of_daughters(older_cell_df, my_cell_older['ID'], max_ID)
 
             # connect my cell with itself older
             connect(ax, my_cell, my_cell_older)
             # check if number of daughter cells decreased, if yes, mark it as a division point
+
             if my_new_number_of_daughters < number_of_daughters:
+
                 mark_as_division(ax, my_cell)
 
         # If the cell of interest is not in the older frame
@@ -53,8 +57,10 @@ def tracking(clicked_x, clicked_y):
             my_cell_older = older_cell_df.loc[np.where(older_cell_df['ID'] == my_cell['parent_ID'])[0][0]]
             connect(ax, my_cell, my_cell_older)
             mark_as_division(ax, my_cell)
+            max_ID = my_cell['ID']
 
         my_cell = my_cell_older
+        cell_df = older_cell_df
 
 def get_my_cell(cell_df, x, y):
     xs = cell_df['position_x']
@@ -64,16 +70,21 @@ def get_my_cell(cell_df, x, y):
     return cell_df.loc[np.argmin(dist)]
 
 def get_number_of_daughters(cell_df,me,max):
+
     cells = cell_df.iloc[np.where(cell_df['parent_ID']==me)]
-    number_of_daughters = len(np.where(cells['ID']<max))
+
+    number_of_daughters = len(np.where(cells['ID']<max)[0])
     return number_of_daughters
 def connect(ax,cell_a,cell_b):
     ax.plot([cell_a['position_x'],cell_b['position_x']],[cell_a['position_y'],cell_b['position_y']],color=plt.get_cmap("Set1").colors[int(cell_a['cell_type'])])
     ax2.plot([cell_a['position_x'],cell_b['position_x']],[cell_a['position_y'],cell_b['position_y']],color=plt.get_cmap("Set1").colors[int(cell_a['cell_type'])])
+
     return
 def mark_as_division(ax,cell):
-    ax.scatter(cell['position_x'],cell['position_y'],color = 'k',s=3,alpha=0.5)
-    ax2.scatter(cell['position_x'], cell['position_y'], color='k',s=3, alpha=0.5)
+    ax.scatter(cell['position_x'],cell['position_y'],color = 'k',s=7,alpha=0.5)
+    ax2.scatter(cell['position_x'], cell['position_y'], color='k',s=7, alpha=0.5)
+    #ax2.text(cell['position_x'], cell['position_y'], 'ID: '+str(cell['ID']))
+    #ax2.text(cell['position_x'], cell['position_y']-10, 'pID: '+ str(cell['parent_ID']))
     return
 def plot_one_cell_type(cell_df, ax=None, c_type=0, color='grey', edgecolor='dimgrey'):
     x_pos = cell_df['position_x']
@@ -121,6 +132,5 @@ xs = []
 ys = []
 cid = fig.canvas.mpl_connect('button_press_event', onclick)
 # Click on cell of interest and get it
-
 
 
