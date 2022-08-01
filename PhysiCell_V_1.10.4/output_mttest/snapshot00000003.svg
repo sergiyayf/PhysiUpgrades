@@ -17,7 +17,7 @@
   </text>
   <text x="12.5" y="57.5"
    font-family="Arial" font-size="23.75" fill="black" >
-   3 agents
+   1 agents
   </text>
  <g id="tissue" 
     transform="translate(0,1070) scale(1,-1)">
@@ -25,16 +25,8 @@
   </g>
   <g id="cells">
    <g id="cell0" type="wt" dead="false" >
-  <circle cx="507.918" cy="499.035" r="8.41271" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="507.918" cy="499.035" r="5.05167" stroke-width="0.5" stroke="grey" fill="grey"/>
-   </g>
-   <g id="cell1" type="wt" dead="false" >
-  <circle cx="493.674" cy="500.495" r="6.78181" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="493.674" cy="500.495" r="4.08714" stroke-width="0.5" stroke="grey" fill="grey"/>
-   </g>
-   <g id="cell7" type="wt" dead="false" >
-  <circle cx="481.115" cy="502.853" r="6.78181" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="481.115" cy="502.853" r="4.08714" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="500" cy="500" r="8.41271" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="500" cy="500" r="5.05167" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
   </g>
  </g>
@@ -45,7 +37,7 @@
   </text>
   <text x="25" y="1045"
    font-family="Arial" font-size="18.75" fill="black" >
-   0 days, 0 hours, 0 minutes, and 2.9786 seconds
+   0 days, 0 hours, 0 minutes, and 2.6018 seconds
   </text>
   <rect x="0" y="70" width="1000" height="1000" stroke-width="2" stroke="rgb(0,0,0)" fill="none"/>
 </svg>

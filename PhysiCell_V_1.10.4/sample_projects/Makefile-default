@@ -71,12 +71,21 @@ name:
 
 # sample projects 	
 list-projects:
-	@echo "Sample projects: template biorobots-sample cancer-biorobots-sample cancer-immune-sample"
+	@echo "Sample projects: template checkpointing biorobots-sample cancer-biorobots-sample cancer-immune-sample"
 	@echo "                 celltypes3-sample heterogeneity-sample pred-prey-farmer virus-macrophage-sample"
 	@echo "                 worm-sample interaction-sample"
 	@echo ""
 	@echo "Sample intracellular projects: ode-energy-sample physiboss-cell-lines-sample cancer-metabolism-sample"
 	@echo ""
+	
+checkpointing:
+	cp ./sample_projects/checkpointing/custom_modules/* ./custom_modules/
+	touch main.cpp && cp main.cpp main-backup.cpp
+	cp ./sample_projects/checkpointing/main.cpp ./main.cpp 
+	cp Makefile Makefile-backup
+	cp ./sample_projects/checkpointing/Makefile .
+	cp ./config/PhysiCell_settings.xml ./config/PhysiCell_settings-backup.xml 
+	cp ./sample_projects/checkpointing/config/* ./config/
 	
 template:
 	cp ./sample_projects/template/custom_modules/* ./custom_modules/
