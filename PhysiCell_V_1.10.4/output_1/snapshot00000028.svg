@@ -17,7 +17,7 @@
   </text>
   <text x="12.5" y="57.5"
    font-family="Arial" font-size="23.75" fill="black" >
-   3 agents
+   4 agents
   </text>
  <g id="tissue" 
     transform="translate(0,1070) scale(1,-1)">
@@ -25,16 +25,20 @@
   </g>
   <g id="cells">
    <g id="cell0" type="wt" dead="false" >
-  <circle cx="510.153" cy="497.875" r="8.40715" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="510.153" cy="497.875" r="5.05003" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="512.899" cy="517.349" r="9.99433" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="512.899" cy="517.349" r="6.06863" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
    <g id="cell6" type="wt" dead="false" >
-  <circle cx="483.928" cy="500.715" r="6.89262" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="483.928" cy="500.715" r="4.16895" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="481.925" cy="493.847" r="8.92467" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="481.925" cy="493.847" r="5.41498" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
    <g id="cell7" type="wt" dead="false" >
-  <circle cx="496.713" cy="503.266" r="6.89262" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="496.713" cy="503.266" r="4.16895" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="498.085" cy="489.115" r="8.94409" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="498.085" cy="489.115" r="5.47355" stroke-width="0.5" stroke="grey" fill="grey"/>
+   </g>
+   <g id="cell8" type="wt" dead="false" >
+  <circle cx="512.038" cy="499.136" r="9.32349" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="512.038" cy="499.136" r="5.70196" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
   </g>
  </g>
@@ -45,7 +49,7 @@
   </text>
   <text x="25" y="1045"
    font-family="Arial" font-size="18.75" fill="black" >
-   0 days, 0 hours, 1 minutes, and 7.8163 seconds
+   0 days, 0 hours, 0 minutes, and 37.1441 seconds
   </text>
   <rect x="0" y="70" width="1000" height="1000" stroke-width="2" stroke="rgb(0,0,0)" fill="none"/>
 </svg>

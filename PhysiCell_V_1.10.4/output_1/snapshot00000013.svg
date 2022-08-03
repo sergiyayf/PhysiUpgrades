@@ -17,7 +17,7 @@
   </text>
   <text x="12.5" y="57.5"
    font-family="Arial" font-size="23.75" fill="black" >
-   2 agents
+   1 agents
   </text>
  <g id="tissue" 
     transform="translate(0,1070) scale(1,-1)">
@@ -25,12 +25,8 @@
   </g>
   <g id="cells">
    <g id="cell0" type="wt" dead="false" >
-  <circle cx="505.769" cy="499.272" r="8.02418" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="505.769" cy="499.272" r="4.86209" stroke-width="0.5" stroke="grey" fill="grey"/>
-   </g>
-   <g id="cell6" type="wt" dead="false" >
-  <circle cx="490.632" cy="501.183" r="8.02418" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="490.632" cy="501.183" r="4.86209" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="500" cy="500" r="10.2433" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="500" cy="500" r="6.19748" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
   </g>
  </g>
@@ -41,7 +37,7 @@
   </text>
   <text x="25" y="1045"
    font-family="Arial" font-size="18.75" fill="black" >
-   0 days, 0 hours, 0 minutes, and 29.6187 seconds
+   0 days, 0 hours, 0 minutes, and 15.0967 seconds
   </text>
   <rect x="0" y="70" width="1000" height="1000" stroke-width="2" stroke="rgb(0,0,0)" fill="none"/>
 </svg>
