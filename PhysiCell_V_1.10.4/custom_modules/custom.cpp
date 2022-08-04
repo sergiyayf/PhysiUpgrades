@@ -167,6 +167,7 @@ void setup_tissue( void )
 	// create some of each type of cell 
 	
 	Cell* pC;
+    Phenotype& phenotype = pC -> phenotype; 
     if (parameters.bools("enable_file_loading")){
     
     // Read the xml document and make sure document is correctly read;
@@ -256,12 +257,22 @@ void setup_tissue( void )
                 } else if (value == "total_volume") {
                     pC->set_total_volume(B[index][i]);
                 } else if (value == "current_phase") {
+                    /*
                     std::cout<<"code"<<std::endl;
                     std::cout<<pC->phenotype.cycle.current_phase().code<<std::endl;
                     std::cout<<"B:"<<B[index][i]<<std::endl;
-                    pC->phenotype.cycle.current_phase().code = B[index][i];
-                    std::cout<<"New code"<<std::endl;
-                    std::cout<<pC->phenotype.cycle.current_phase().code<<std::endl;
+                    while (pC->phenotype.cycle.current_phase().code != B[index][i]){
+                        // check which cycle model this is and how many phases are there.
+                        // change the transition rates to 9e99, advance the cycle and rewrite the real transition rates at the end from matlab
+                        pC->phenotype.cycle.data.transition_rate(0,1)=9e99;
+                        pC->phenotype.cycle.data.transition_rate(1,2)=9e99;
+                        pC->phenotype.cycle.data.transition_rate(2,3)=9e99;
+                        pC->phenotype.cycle.data.transition_rate(3,0)=9e99;
+                        pC->phenotype.cycle.advance_cycle(pC,pC->phenotype, 0.01);
+                        
+                        std::cout<<"New code"<<std::endl;
+                        std::cout<<pC->phenotype.cycle.current_phase().code<<std::endl;
+                    }*/
                 } else if (value == "elapsed_time_in_phase") {
                     pC->phenotype.cycle.data.elapsed_time_in_phase = B[index][i]; 
                 } else if (value == "nuclear_volume") {
@@ -331,7 +342,49 @@ void setup_tissue( void )
                     //pC->set_cell_adhesion_affinities(B[index][i],size);
                 } else if (value == "target_solid_nuclear"){
                     //pC->set_target_solid_nuclear(B[index][i]);
-                } 
+                } else if (value == "secretion_rates"){
+                        pugi::xml_node variables_node = physicell_checkpoint_root.child("microenvironment").child("domain").child("variables");
+                        pugi::xml_node substrate_node = variables_node.first_child();
+                    for (int num_substrates = 0; num_substrates<std::stoi(size); num_substrates++){
+                                                                        
+                        std::string substrate_name = substrate_node.attribute("name").value(); 
+                        double value = B[index+num_substrates][i];
+                        set_single_behavior(pC,substrate_name+" secretion",value);
+                            
+                        substrate_node = substrate_node.next_sibling();
+                       
+                    }
+                } else if (value == "transformation_rates"){
+                    for (int cell_type_ID = 0; cell_type_ID<std::stoi(size); cell_type_ID++){
+                        
+                        double value = B[index+cell_type_ID][i];
+                        set_single_behavior(pC,"transform to cell type "+std::to_string(cell_type_ID),value); 
+                        
+                    }
+                } else {
+                    
+                    // Check if the value is in custom data
+                    // Custom scalar
+                    
+                    for( int j=0 ; j < pC->custom_data.variables.size(); j++ )
+                        {
+                            std::string name = pC->custom_data.variables[j].name; 
+                            if (value == name) {
+                                pC->custom_data[value] = B[index+j][i]; 
+                            }
+                        }
+                    // Custom vector 
+                    for( int j=0 ; j < pC->custom_data.vector_variables.size(); j++ )
+                        {
+                            std::string name = pC->custom_data.vector_variables[j].name; 
+                            if (value == name) {
+                                for (int k = 0; k<std::stoi(size);k++){
+                                pC->custom_data[value] = B[index+j+k][i]; 
+                                }
+                            }
+                        }
+                    
+                }
                     
                     
                 //std::cout<<value<<std::endl;
