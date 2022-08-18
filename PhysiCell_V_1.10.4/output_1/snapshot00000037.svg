@@ -17,7 +17,7 @@
   </text>
   <text x="12.5" y="57.5"
    font-family="Arial" font-size="23.75" fill="black" >
-   10 agents
+   6 agents
   </text>
  <g id="tissue" 
     transform="translate(0,1070) scale(1,-1)">
@@ -25,44 +25,28 @@
   </g>
   <g id="cells">
    <g id="cell0" type="wt" dead="false" >
-  <circle cx="518.106" cy="489.241" r="7.6679" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="518.106" cy="489.241" r="4.67792" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="511.087" cy="523.678" r="10.5533" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="511.087" cy="523.678" r="6.34819" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
    <g id="cell6" type="wt" dead="false" >
-  <circle cx="479.166" cy="500.045" r="8.28961" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="479.166" cy="500.045" r="4.9995" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="479.158" cy="489.061" r="8.309" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="479.158" cy="489.061" r="5.00863" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
    <g id="cell7" type="wt" dead="false" >
-  <circle cx="490.726" cy="510.788" r="8.18074" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="490.726" cy="510.788" r="4.95043" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="496.787" cy="486.265" r="10.4779" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="496.787" cy="486.265" r="6.31666" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
    <g id="cell8" type="wt" dead="false" >
-  <circle cx="493.23" cy="496.68" r="7.02267" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="493.23" cy="496.68" r="4.28943" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="513.811" cy="491.63" r="8.33846" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="513.811" cy="491.63" r="5.0234" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
    <g id="cell9" type="wt" dead="false" >
-  <circle cx="505.339" cy="508.5" r="6.44367" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="505.339" cy="508.5" r="3.98449" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="480.036" cy="504.854" r="8.309" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="480.036" cy="504.854" r="5.00863" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
    <g id="cell10" type="wt" dead="false" >
-  <circle cx="530.362" cy="497.01" r="7.6679" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="530.362" cy="497.01" r="4.67792" stroke-width="0.5" stroke="grey" fill="grey"/>
-   </g>
-   <g id="cell11" type="wt" dead="false" >
-  <circle cx="517.723" cy="503.817" r="7.53867" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="517.723" cy="503.817" r="4.60394" stroke-width="0.5" stroke="grey" fill="grey"/>
-   </g>
-   <g id="cell12" type="wt" dead="false" >
-  <circle cx="506.352" cy="496.149" r="6.93232" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="506.352" cy="496.149" r="4.26383" stroke-width="0.5" stroke="grey" fill="grey"/>
-   </g>
-   <g id="cell13" type="wt" dead="false" >
-  <circle cx="501.296" cy="519.753" r="6.44367" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="501.296" cy="519.753" r="3.98449" stroke-width="0.5" stroke="grey" fill="grey"/>
-   </g>
-   <g id="cell14" type="wt" dead="false" >
-  <circle cx="499.579" cy="484.975" r="7.02267" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="499.579" cy="484.975" r="4.28943" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="519.059" cy="507.073" r="8.90308" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="519.059" cy="507.073" r="5.41645" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
   </g>
  </g>
@@ -73,7 +57,7 @@
   </text>
   <text x="25" y="1045"
    font-family="Arial" font-size="18.75" fill="black" >
-   0 days, 0 hours, 1 minutes, and 26.9359 seconds
+   0 days, 0 hours, 0 minutes, and 52.6294 seconds
   </text>
   <rect x="0" y="70" width="1000" height="1000" stroke-width="2" stroke="rgb(0,0,0)" fill="none"/>
 </svg>

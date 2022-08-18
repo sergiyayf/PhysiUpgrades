@@ -27,9 +27,9 @@
 		</software>
 		<citation />
 		<current_time units="min">3000.000000</current_time>
-		<current_runtime units="sec">111.333114</current_runtime>
-		<created>2022-07-30T14:24:52Z</created>
-		<last_modified>2022-07-30T14:24:52Z</last_modified>
+		<current_runtime units="sec">74.684306</current_runtime>
+		<created>2022-08-03T12:39:11Z</created>
+		<last_modified>2022-08-03T12:39:11Z</last_modified>
 	</metadata>
 	<microenvironment>
 		<domain name="microenvironment">
@@ -43,7 +43,14 @@
 				</voxels>
 			</mesh>
 			<variables>
-				<variable name="substrate" units="dimensionless" ID="0">
+				<variable name="o2" units="dimensionless" ID="0">
+					<physical_parameter_set>
+						<conditions />
+						<diffusion_coefficient units="micron^2/min">100000.000000</diffusion_coefficient>
+						<decay_rate units="1/min">10.000000</decay_rate>
+					</physical_parameter_set>
+				</variable>
+				<variable name="co2" units="dimensionless" ID="1">
 					<physical_parameter_set>
 						<conditions />
 						<diffusion_coefficient units="micron^2/min">100000.000000</diffusion_coefficient>
@@ -115,21 +122,21 @@
 							<label index="63" size="3" units="micron/min">motility_vector</label>
 							<label index="66" size="1" units="none">chemotaxis_index</label>
 							<label index="67" size="1" units="none">chemotaxis_direction</label>
-							<label index="68" size="1" units="none">chemotactic_sensitivities</label>
-							<label index="69" size="1" units="1/min">secretion_rates</label>
-							<label index="70" size="1" units="1/min">uptake_rates</label>
-							<label index="71" size="1" units="stuff/cubic micron">saturation_densities</label>
-							<label index="72" size="1" units="stuff/min">net_export_rates</label>
-							<label index="73" size="1" units="stuff">internalized_total_substrates</label>
-							<label index="74" size="1" units="none">fraction_released_at_death</label>
-							<label index="75" size="1" units="none">fraction_transferred_when_ingested</label>
-							<label index="76" size="1" units="1/min">dead_phagocytosis_rate</label>
-							<label index="77" size="5" units="1/min">live_phagocytosis_rates</label>
-							<label index="82" size="5" units="1/min">attack_rates</label>
-							<label index="87" size="1" units="1/min">damage_rate</label>
-							<label index="88" size="5" units="1/min">fusion_rates</label>
-							<label index="93" size="5" units="1/min">transformation_rates</label>
-							<label index="98" size="1" units="dimensionless">sample</label>
+							<label index="68" size="2" units="none">chemotactic_sensitivities</label>
+							<label index="70" size="2" units="1/min">secretion_rates</label>
+							<label index="72" size="2" units="1/min">uptake_rates</label>
+							<label index="74" size="2" units="stuff/cubic micron">saturation_densities</label>
+							<label index="76" size="2" units="stuff/min">net_export_rates</label>
+							<label index="78" size="2" units="stuff">internalized_total_substrates</label>
+							<label index="80" size="2" units="none">fraction_released_at_death</label>
+							<label index="82" size="2" units="none">fraction_transferred_when_ingested</label>
+							<label index="84" size="1" units="1/min">dead_phagocytosis_rate</label>
+							<label index="85" size="5" units="1/min">live_phagocytosis_rates</label>
+							<label index="90" size="5" units="1/min">attack_rates</label>
+							<label index="95" size="1" units="1/min">damage_rate</label>
+							<label index="96" size="5" units="1/min">fusion_rates</label>
+							<label index="101" size="5" units="1/min">transformation_rates</label>
+							<label index="106" size="1" units="dimensionless">sample</label>
 						</labels>
 						<filename>output00000050_cells.mat</filename>
 					</simplified_data>

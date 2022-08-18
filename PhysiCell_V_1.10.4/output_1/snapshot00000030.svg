@@ -25,20 +25,20 @@
   </g>
   <g id="cells">
    <g id="cell0" type="wt" dead="false" >
-  <circle cx="513.8" cy="497.214" r="8.40953" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="513.8" cy="497.214" r="5.05079" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="512.917" cy="518.147" r="10.2608" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="512.917" cy="518.147" r="6.21013" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
    <g id="cell6" type="wt" dead="false" >
-  <circle cx="482.756" cy="499.945" r="7.49256" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="482.756" cy="499.945" r="4.55487" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="480.912" cy="494.175" r="9.6202" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="480.912" cy="494.175" r="5.84658" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
    <g id="cell7" type="wt" dead="false" >
-  <circle cx="492.908" cy="508.575" r="6.56469" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="492.908" cy="508.575" r="4.02806" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="498.117" cy="488.073" r="9.67643" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="498.117" cy="488.073" r="5.89935" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
    <g id="cell8" type="wt" dead="false" >
-  <circle cx="499.676" cy="498.191" r="6.56469" stroke-width="0.5" stroke="black" fill="grey"/>
-  <circle cx="499.676" cy="498.191" r="4.02806" stroke-width="0.5" stroke="grey" fill="grey"/>
+  <circle cx="513.002" cy="499.052" r="9.89431" stroke-width="0.5" stroke="black" fill="grey"/>
+  <circle cx="513.002" cy="499.052" r="6.02228" stroke-width="0.5" stroke="grey" fill="grey"/>
    </g>
   </g>
  </g>
@@ -49,7 +49,7 @@
   </text>
   <text x="25" y="1045"
    font-family="Arial" font-size="18.75" fill="black" >
-   0 days, 0 hours, 1 minutes, and 12.9153 seconds
+   0 days, 0 hours, 0 minutes, and 40.3225 seconds
   </text>
   <rect x="0" y="70" width="1000" height="1000" stroke-width="2" stroke="rgb(0,0,0)" fill="none"/>
 </svg>
