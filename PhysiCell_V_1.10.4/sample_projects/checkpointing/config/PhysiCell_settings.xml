@@ -27,7 +27,7 @@
 	</parallel> 
 	
 	<save>
-		<folder>output_mttest</folder>  
+		<folder>output</folder>  
 
 		<full_data>
 			<interval units="min">60</interval>
@@ -46,11 +46,28 @@
 	
 	<options>
 		<legacy_random_points_on_sphere_in_divide>false</legacy_random_points_on_sphere_in_divide>
-		<virtual_wall_at_domain_edge>true</virtual_wall_at_domain_edge>
+        <virtual_wall_at_domain_edge>true</virtual_wall_at_domain_edge>
 	</options>	
 
 	<microenvironment_setup>
-		<variable name="substrate" units="dimensionless" ID="0">
+		<variable name="o2" units="dimensionless" ID="0">
+        <physical_parameter_set>
+          <diffusion_coefficient units="micron^2/min">100000.0</diffusion_coefficient>
+          <decay_rate units="1/min">10</decay_rate>
+        </physical_parameter_set>
+        <initial_condition units="mmHg">0</initial_condition>
+        <Dirichlet_boundary_condition units="mmHg" enabled="True">0</Dirichlet_boundary_condition>
+        <Dirichlet_options>
+          <boundary_value ID="xmin" enabled="False">0</boundary_value>
+          <boundary_value ID="xmax" enabled="False">0</boundary_value>
+          <boundary_value ID="ymin" enabled="False">0</boundary_value>
+          <boundary_value ID="ymax" enabled="False">0</boundary_value>
+          <boundary_value ID="zmin" enabled="False">0</boundary_value>
+          <boundary_value ID="zmax" enabled="False">0</boundary_value>
+        </Dirichlet_options>
+        </variable>
+
+      <variable name="co2" units="dimensionless" ID="1">
         <physical_parameter_set>
           <diffusion_coefficient units="micron^2/min">100000.0</diffusion_coefficient>
           <decay_rate units="1/min">10</decay_rate>
@@ -86,13 +103,13 @@
         <phenotype>
           <cycle code="5" name="live">
             <phase_durations units="min">
-              <duration index="0" fixed_duration="false">900.0</duration>
+              <duration index="0" fixed_duration="false">220.0</duration>
             </phase_durations>
             </cycle>
 
           <death>
             <model code="100" name="apoptosis">
-              <death_rate units="1/min">0.0</death_rate>
+              <death_rate units="1/min">0.00001</death_rate>
               <phase_durations units="min">
                 <duration index="0" fixed_duration="true">516</duration>
               </phase_durations>
@@ -106,7 +123,7 @@
               </parameters>
             </model>
             <model code="101" name="necrosis">
-              <death_rate units="1/min">0.0</death_rate>
+              <death_rate units="1/min">0.00002</death_rate>
               <phase_durations units="min">
                 <duration index="0" fixed_duration="true">0</duration>
               <duration index="1" fixed_duration="true">86400</duration>
@@ -165,7 +182,7 @@
               <use_2D>true</use_2D>
               <chemotaxis>
                 <enabled>false</enabled>
-                <substrate>substrate</substrate>
+                <substrate>o2</substrate>
                 <direction>1</direction>
               </chemotaxis>
               <advanced_chemotaxis>
@@ -173,17 +190,25 @@
                 <normalize_each_gradient>false</normalize_each_gradient>
                 <chemotactic_sensitivities>
                   <chemotactic_sensitivity substrate="substrate">0.0</chemotactic_sensitivity>
+                  <chemotactic_sensitivity substrate="o2">0.0</chemotactic_sensitivity>
+                  <chemotactic_sensitivity substrate="co2">0.0</chemotactic_sensitivity>
                   </chemotactic_sensitivities>
                 </advanced_chemotaxis>
             </options>
           </motility>
 
           <secretion>
-            <substrate name="substrate">
-              <secretion_rate units="1/min">0</secretion_rate>
+            <substrate name="o2">
+              <secretion_rate units="1/min">0.2</secretion_rate>
               <secretion_target units="substrate density">1</secretion_target>
               <uptake_rate units="1/min">0</uptake_rate>
               <net_export_rate units="total substrate/min">0</net_export_rate>
+            </substrate>
+            <substrate name="co2">
+              <secretion_rate units="1/min">0.0</secretion_rate>
+              <secretion_target units="substrate density">0.0</secretion_target>
+              <uptake_rate units="1/min">0.0</uptake_rate>
+              <net_export_rate units="total substrate/min">0.0</net_export_rate>
             </substrate>
             </secretion>
 
@@ -198,10 +223,10 @@
                 </live_phagocytosis_rates>
 
             <attack_rates>
-                  <attack_rate name="wt" units="1/min">0</attack_rate>
+                  <attack_rate name="wt" units="1/min">0.0</attack_rate>
                   <attack_rate name="mutant1" units="1/min">0.0</attack_rate>
                   <attack_rate name="mutant2" units="1/min">0.0</attack_rate>
-                  <attack_rate name="mutant3" units="1/min">0.0</attack_rate>
+                  <attack_rate name="mutant3" units="1/min">0.0001</attack_rate>
                   <attack_rate name="mutant4" units="1/min">0.0</attack_rate>
                   </attack_rates>
 
@@ -219,7 +244,7 @@
           <cell_transformations>
             <transformation_rates>
                 <transformation_rate name="wt" units="1/min">0</transformation_rate>
-                <transformation_rate name="mutant1" units="1/min">0.0001</transformation_rate>
+                <transformation_rate name="mutant1" units="1/min">0.001</transformation_rate>
                 <transformation_rate name="mutant2" units="1/min">0.0</transformation_rate>
                 <transformation_rate name="mutant3" units="1/min">0.0</transformation_rate>
                 <transformation_rate name="mutant4" units="1/min">0.0</transformation_rate>
@@ -229,6 +254,8 @@
           </phenotype>
         <custom_data>
           <sample units="dimensionless" conserved="false" description="">1.0</sample>
+          <other units="dimensionless" conserved="false" description="">36.0</other>
+          
         </custom_data>
       </cell_definition>
 
@@ -315,7 +342,7 @@
               <use_2D>true</use_2D>
               <chemotaxis>
                 <enabled>false</enabled>
-                <substrate>substrate</substrate>
+                <substrate>o2</substrate>
                 <direction>1</direction>
               </chemotaxis>
               <advanced_chemotaxis>
@@ -323,17 +350,25 @@
                 <normalize_each_gradient>false</normalize_each_gradient>
                 <chemotactic_sensitivities>
                   <chemotactic_sensitivity substrate="substrate">0.0</chemotactic_sensitivity>
+                  <chemotactic_sensitivity substrate="o2">0.0</chemotactic_sensitivity>
+                  <chemotactic_sensitivity substrate="co2">0.0</chemotactic_sensitivity>
                   </chemotactic_sensitivities>
                 </advanced_chemotaxis>
             </options>
           </motility>
 
           <secretion>
-            <substrate name="substrate">
+            <substrate name="o2">
               <secretion_rate units="1/min">0</secretion_rate>
               <secretion_target units="substrate density">1</secretion_target>
               <uptake_rate units="1/min">0</uptake_rate>
               <net_export_rate units="total substrate/min">0</net_export_rate>
+            </substrate>
+            <substrate name="co2">
+              <secretion_rate units="1/min">0.0</secretion_rate>
+              <secretion_target units="substrate density">0.0</secretion_target>
+              <uptake_rate units="1/min">0.0</uptake_rate>
+              <net_export_rate units="total substrate/min">0.0</net_export_rate>
             </substrate>
             </secretion>
 
@@ -383,6 +418,8 @@
           </phenotype>
         <custom_data>
           <sample units="dimensionless" conserved="false" description="">1.0</sample>
+          <other units="dimensionless" conserved="false" description="">0.0</other>
+          
         </custom_data>
       </cell_definition>
 
@@ -469,7 +506,7 @@
               <use_2D>true</use_2D>
               <chemotaxis>
                 <enabled>false</enabled>
-                <substrate>substrate</substrate>
+                <substrate>o2</substrate>
                 <direction>1</direction>
               </chemotaxis>
               <advanced_chemotaxis>
@@ -477,17 +514,25 @@
                 <normalize_each_gradient>false</normalize_each_gradient>
                 <chemotactic_sensitivities>
                   <chemotactic_sensitivity substrate="substrate">0.0</chemotactic_sensitivity>
+                  <chemotactic_sensitivity substrate="o2">0.0</chemotactic_sensitivity>
+                  <chemotactic_sensitivity substrate="co2">0.0</chemotactic_sensitivity>
                   </chemotactic_sensitivities>
                 </advanced_chemotaxis>
             </options>
           </motility>
 
           <secretion>
-            <substrate name="substrate">
+            <substrate name="o2">
               <secretion_rate units="1/min">0</secretion_rate>
               <secretion_target units="substrate density">1</secretion_target>
               <uptake_rate units="1/min">0</uptake_rate>
               <net_export_rate units="total substrate/min">0</net_export_rate>
+            </substrate>
+            <substrate name="co2">
+              <secretion_rate units="1/min">0.0</secretion_rate>
+              <secretion_target units="substrate density">0.0</secretion_target>
+              <uptake_rate units="1/min">0.0</uptake_rate>
+              <net_export_rate units="total substrate/min">0.0</net_export_rate>
             </substrate>
             </secretion>
 
@@ -533,6 +578,8 @@
           </phenotype>
         <custom_data>
           <sample units="dimensionless" conserved="false" description="">1.0</sample>
+          <other units="dimensionless" conserved="false" description="">0.0</other>
+          
         </custom_data>
       </cell_definition>
 
@@ -619,7 +666,7 @@
               <use_2D>true</use_2D>
               <chemotaxis>
                 <enabled>false</enabled>
-                <substrate>substrate</substrate>
+                <substrate>o2</substrate>
                 <direction>1</direction>
               </chemotaxis>
               <advanced_chemotaxis>
@@ -627,17 +674,25 @@
                 <normalize_each_gradient>false</normalize_each_gradient>
                 <chemotactic_sensitivities>
                   <chemotactic_sensitivity substrate="substrate">0.0</chemotactic_sensitivity>
+                  <chemotactic_sensitivity substrate="o2">0.0</chemotactic_sensitivity>
+                  <chemotactic_sensitivity substrate="co2">0.0</chemotactic_sensitivity>
                   </chemotactic_sensitivities>
                 </advanced_chemotaxis>
             </options>
           </motility>
 
           <secretion>
-            <substrate name="substrate">
+            <substrate name="o2">
               <secretion_rate units="1/min">0</secretion_rate>
               <secretion_target units="substrate density">1</secretion_target>
               <uptake_rate units="1/min">0</uptake_rate>
               <net_export_rate units="total substrate/min">0</net_export_rate>
+            </substrate>
+            <substrate name="co2">
+              <secretion_rate units="1/min">0.0</secretion_rate>
+              <secretion_target units="substrate density">0.0</secretion_target>
+              <uptake_rate units="1/min">0.0</uptake_rate>
+              <net_export_rate units="total substrate/min">0.0</net_export_rate>
             </substrate>
             </secretion>
 
@@ -683,6 +738,8 @@
           </phenotype>
         <custom_data>
           <sample units="dimensionless" conserved="false" description="">1.0</sample>
+          <other units="dimensionless" conserved="false" description="">0.0</other>
+          
         </custom_data>
       </cell_definition>
 
@@ -769,7 +826,7 @@
               <use_2D>true</use_2D>
               <chemotaxis>
                 <enabled>false</enabled>
-                <substrate>substrate</substrate>
+                <substrate>o2</substrate>
                 <direction>1</direction>
               </chemotaxis>
               <advanced_chemotaxis>
@@ -777,17 +834,25 @@
                 <normalize_each_gradient>false</normalize_each_gradient>
                 <chemotactic_sensitivities>
                   <chemotactic_sensitivity substrate="substrate">0.0</chemotactic_sensitivity>
+                  <chemotactic_sensitivity substrate="o2">0.0</chemotactic_sensitivity>
+                  <chemotactic_sensitivity substrate="co2">0.0</chemotactic_sensitivity>
                   </chemotactic_sensitivities>
                 </advanced_chemotaxis>
             </options>
           </motility>
 
           <secretion>
-            <substrate name="substrate">
+            <substrate name="o2">
               <secretion_rate units="1/min">0</secretion_rate>
               <secretion_target units="substrate density">1</secretion_target>
               <uptake_rate units="1/min">0</uptake_rate>
               <net_export_rate units="total substrate/min">0</net_export_rate>
+            </substrate>
+            <substrate name="co2">
+              <secretion_rate units="1/min">0.0</secretion_rate>
+              <secretion_target units="substrate density">0.0</secretion_target>
+              <uptake_rate units="1/min">0.0</uptake_rate>
+              <net_export_rate units="total substrate/min">0.0</net_export_rate>
             </substrate>
             </secretion>
 
@@ -833,6 +898,8 @@
           </phenotype>
         <custom_data>
           <sample units="dimensionless" conserved="false" description="">1.0</sample>
+          <other units="dimensionless" conserved="false" description="">0.0</other>
+          
         </custom_data>
       </cell_definition>
 
@@ -849,7 +916,7 @@
 		<random_seed type="int" units="dimensionless" description="">0</random_seed>
         <number_of_cells type="int" units="none" description="initial number of cells (for each cell type)">5</number_of_cells>
         <enable_file_loading type="bool" units="none" description="">1</enable_file_loading>
-        <checkpoint_filename type="string" units="none" description="matlab filename from which cells will be loaded">./output/output00000080_cells.mat</checkpoint_filename> 
+        <checkpoint_filename type="string" units="none" description="matlab filename from which cells will be loaded">./output_2/output00000025</checkpoint_filename>
     </user_parameters>
 	
 </PhysiCell_settings>

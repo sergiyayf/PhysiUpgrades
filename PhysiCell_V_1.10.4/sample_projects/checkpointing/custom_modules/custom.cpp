@@ -167,32 +167,9 @@ void setup_tissue( void )
 	// create some of each type of cell 
 	
 	Cell* pC;
-	/*
-	for( int k=0; k < cell_definitions_by_index.size() ; k++ )
-	{
-		Cell_Definition* pCD = cell_definitions_by_index[k]; 
-		std::cout << "Placing cells of type " << pCD->name << " ... " << std::endl; 
-		for( int n = 0 ; n < parameters.ints("number_of_cells") ; n++ )
-		{
-			std::vector<double> position = {0,0,0}; 
-			position[0] = Xmin + UniformRandom()*Xrange; 
-			position[1] = Ymin + UniformRandom()*Yrange; 
-			position[2] = Zmin + UniformRandom()*Zrange; 
-			
-			pC = create_cell( *pCD ); 
-			pC->assign_position( position );
-		}
-	}
-	std::cout << std::endl; 
-	
-	// load cells from your CSV file (if enabled)
-	load_cells_from_pugixml(); 	
-	*/
-    
+    Phenotype& phenotype = pC -> phenotype; 
     if (parameters.bools("enable_file_loading")){
-        
-        load_from_checkpoint(parameters.strings("checkpoint_filename"));
-        
+        load_cells_physicell(parameters.strings("checkpoint_filename"));        
     } else {
         
     Cell_Definition* pCD = find_cell_definition("wt"); 
@@ -209,32 +186,6 @@ std::vector<std::string> my_coloring_function( Cell* pCell )
 
 void phenotype_function( Cell* pCell, Phenotype& phenotype, double dt )
 { return; }
-
-void load_from_checkpoint(std::string filename)
-{
-    // Read matlab cell data into a matrix 
-    std::vector<std::vector<double>> B = read_matlab( filename );
-    
-    // Get number of cells in the simulation
-    int number_of_cells = B[0].size();
-    Cell* pC;
-    // Loop through every cell and initiate it in the simulation
-    for (int i = 0; i < number_of_cells; i++) { 
-        // get cell definition and create a cell
-        Cell_Definition* pCD = cell_definitions_by_index[B[6][i]]; 
-        pC = create_cell( *pCD ); 
-        // assig cell position
-        pC -> assign_position({B[2][i],B[3][i],B[4][i]}); 
-        
-        // Get cell the same ID and parent ID
-        pC -> ID = B[0][i];
-        pC -> parent_ID = B[1][i];
-        
-        // Get cell volume
-        pC -> set_total_volume( B[5][i] );
-    }
-    return;    
-}
 
 void custom_function( Cell* pCell, Phenotype& phenotype , double dt )
 { return; } 
